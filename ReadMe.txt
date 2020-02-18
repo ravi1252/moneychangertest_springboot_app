@@ -15,12 +15,12 @@ to add more appropriate loggings, more precise exception handling and others
 
 
 ******************************************************************
-Procedure to bring the service UP and API docs is as follows     :
+Procedure to bring the service UP
 ******************************************************************
 
-1) Import the DB file to database, genting_money_changer
+1) Import the DB file (/db/genting_money_changer.sql) to database with name "genting_money_changer"
 
-2) Start the spring boot app
+2) Perform mvn clean install and Start the spring boot app
 
 Below are endpoints exposed : 
 3) To get the list of currencies and their exchanges rates for the customer to view
@@ -74,7 +74,7 @@ Below are endpoints exposed :
 
 
 6) Save the deal
-	URL : http://localhost:8080/deals
+	URL : http://localhost:8080/currencies/transactions
 	Type : POST
 	Request Body : {
     "name": "ravi",
