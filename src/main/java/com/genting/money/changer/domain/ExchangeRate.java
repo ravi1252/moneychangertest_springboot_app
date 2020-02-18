@@ -55,4 +55,9 @@ public class ExchangeRate {
 	public void setSell(Double sell) {
 		this.sell = sell;
 	}
+
+	@Override
+	public String toString() {
+		return "ExchangeRate [id=" + id + ", currency=" + currency + ", buy=" + buy + ", sell=" + sell + "]";
+	}
 }

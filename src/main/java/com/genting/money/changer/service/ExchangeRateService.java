@@ -17,4 +17,12 @@ public class ExchangeRateService {
 	public List<ExchangeRate> list() {
         return exchangeRateRepo.findAll();
 	}
+	
+	public ExchangeRate findBycurrency(String currency) {
+		List<ExchangeRate> exchangeRateRows = exchangeRateRepo.findBycurrency(currency);
+		if(exchangeRateRows != null && exchangeRateRows.size() > 0) {
+			return exchangeRateRows.get(0);
+		}
+        return null;
+	}
 }

@@ -13,20 +13,20 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.genting.money.changer.exception.InvalidInputDataException;
 import com.genting.money.changer.utils.AppError;
 import com.genting.money.changer.utils.AppResponse;
-import com.genting.money.changer.utils.ValidResponse;
+import com.genting.money.changer.utils.AppResponseStatus;
 
 @ControllerAdvice
-public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(InvalidInputDataException.class)
 	@ResponseBody
 	public AppResponse invalidDataInput(InvalidInputDataException ex, HttpServletResponse response){
-		
+		 
 		ArrayList<AppError> errors = new ArrayList<AppError>();
-		errors.add(new AppError(HttpStatus.BAD_REQUEST.name(), ex.getMessage()));
+		errors.add(new AppError("InvalidInputData", ex.getMessage()));
 		
 		response.setStatus(HttpStatus.BAD_REQUEST.value());
-		return new AppResponse(ValidResponse.failure, errors, null);
+		return new AppResponse(AppResponseStatus.failure, errors, null);
 	}
 	
 	@ExceptionHandler(Exception.class)
@@ -34,10 +34,10 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 	public AppResponse exception(Exception ex, HttpServletResponse response){
 		
 		ArrayList<AppError> errors = new ArrayList<AppError>();
-		errors.add(new AppError(HttpStatus.INTERNAL_SERVER_ERROR.name(), ex.getMessage()));
+		errors.add(new AppError("InternalServerError", ex.getMessage()));
 		
 		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-		return new AppResponse(ValidResponse.failure, errors, null);
+		return new AppResponse(AppResponseStatus.failure, errors, null);
 	}
 
 }

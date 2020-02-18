@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "deals")
-public class Deal {
+@Table(name = "transactions")
+public class Transaction {
 	
 	@Id
 	@GeneratedValue
@@ -17,6 +17,9 @@ public class Deal {
 	
 	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "inputcurrency")
+	private String inputCurrency;
 	
 	@Column(name = "type")
 	private String type;
@@ -54,7 +57,11 @@ public class Deal {
 	}
 
 	public void setType(String type) {
-		this.type = type;
+		if(this.getInputCurrency().equalsIgnoreCase("SGD")) {
+			this.type = "SELL";
+		} else {
+			this.type = "BUY";
+		}
 	}
 
 	public Double getAmount() {
@@ -88,7 +95,13 @@ public class Deal {
 	public void setSellRate(Double sellRate) {
 		this.sellRate = sellRate;
 	}
-	
-	
+
+	public String getInputCurrency() {
+		return inputCurrency;
+	}
+
+	public void setInputCurrency(String inputCurrency) {
+		this.inputCurrency = inputCurrency;
+	}
 	
 }

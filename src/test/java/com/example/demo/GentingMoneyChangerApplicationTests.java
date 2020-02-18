@@ -22,7 +22,7 @@ public class GentingMoneyChangerApplicationTests {
 	ExchangeRateService exchangeRateService;
 
 	@Test
-	public void findCouponList() {
+	public void getCouponList() {
 		List<ExchangeRate> exchangeRateList = exchangeRateService.list();
 		System.out.println("couponList size " + exchangeRateList.size());
 		assertThat(exchangeRateList.size()).isGreaterThan(0);

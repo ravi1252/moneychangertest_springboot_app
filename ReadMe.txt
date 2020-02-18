@@ -22,53 +22,53 @@ Procedure to bring the service UP and API docs is as follows     :
 
 2) Start the spring boot app
 
-3) Initially to load the exchange rates to the memory, please call below endpoint.
-   Loading these into the memory as this is the assessment test and have to limit with the time.
-   URL : http://localhost:8080/exchangerates
+Below are endpoints exposed : 
+3) To get the list of currencies and their exchanges rates for the customer to view
+   URL : http://localhost:8080/currencies/exchangerates
    Type : GET
    Response : {
-	    "status": "success",
-	    "errors": null,
-	    "data": [
-	        {
-	            "id": 1,
-	            "currency": "USD",
-	            "buy": 1.3392,
-	            "sell": 1.3574
-	        },
-	        {
-	            "id": 2,
-	            "currency": "HKD",
-	            "buy": 0.1738,
-	            "sell": 0.1698
-	        }
-	    ]
-	}
+    "status": "success",
+    "errors": null,
+    "data": [
+        {
+            "id": 1,
+            "currency": "USD",
+            "buy": 1.3392,
+            "sell": 1.3574
+        },
+        {
+            "id": 2,
+            "currency": "HKD",
+            "buy": 0.1738,
+            "sell": 0.1698
+        }
+    ]
+   }
    
-4) API to view the exchange rates incase of BUY
-   URL : http://localhost:8080/exchangerates/USD?amt=10
+4) API to view the converted rate, amount to dispense and currency type - BUY request
+   URL : http://localhost:8080/currencies/convert/USD?amount=1
    Type : GET
    Response : {
     "status": "success",
     "errors": null,
     "data": {
         "dispenseCurrencyType": "SGD",
-        "amountToDispense": 13.392,
+        "amountToDispense": 1.3392,
         "buyRate": 1.3392
     }
-   }
+  }
    
 
-5) API to view the exchange rates incase of BUY
-	URL : http://localhost:8080/exchangerates/SGD?amt=1&returnCurrency=USD
+5) API to view the converted rate, amount to dispense and currency type -  SELL request
+	URL : http://localhost:8080/currencies/convert/SGD?amount=1&toCurrency=USD
 	Type : GET
-	Resposne : {
+	Response : {
     "status": "success",
     "errors": null,
     "data": {
         "sellRate": 1.3574,
         "dispenseCurrencyType": "USD",
-        "amountToDispense": 1.3574
+        "amountToDispense": 0.7367025195226168
     }
   }
 
@@ -78,7 +78,7 @@ Procedure to bring the service UP and API docs is as follows     :
 	Type : POST
 	Request Body : {
     "name": "ravi",
-    "type": "SELL",
+    "inputCurrency": "SGD",
     "amount": "12",
     "dispensed": "YES",
     "buyrate": "1.2",

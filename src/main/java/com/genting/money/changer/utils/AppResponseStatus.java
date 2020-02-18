@@ -1,6 +1,6 @@
 package com.genting.money.changer.utils;
 
-public enum ValidResponse {
+public enum AppResponseStatus {
 	
 	success,
 	failure;

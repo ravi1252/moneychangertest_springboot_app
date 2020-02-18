@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class AppResponse {
 
-	public ValidResponse status;
+	public AppResponseStatus status;
 	public ArrayList<AppError> errors;
 	public Object data;
 
-	public AppResponse(ValidResponse status, ArrayList<AppError> errors, Object data) {
+	public AppResponse(AppResponseStatus status, ArrayList<AppError> errors, Object data) {
 		super();
 		this.status = status;
 		this.errors = errors;
@@ -31,11 +31,11 @@ public class AppResponse {
 		this.data = data;
 	}
 
-	public ValidResponse getStatus() {
+	public AppResponseStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(ValidResponse status) {
+	public void setStatus(AppResponseStatus status) {
 		this.status = status;
 	}
 
