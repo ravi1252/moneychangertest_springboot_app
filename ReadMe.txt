@@ -60,9 +60,9 @@ Below are endpoints exposed :
    
 
 5) API to view the converted rate, amount to dispense and currency type -  SELL request
-	URL : http://localhost:8080/currencies/convert/SGD?amount=1&toCurrency=USD
-	Type : GET
-	Response : {
+    URL : http://localhost:8080/currencies/convert/SGD?amount=1&toCurrency=USD
+    Type : GET
+    Response : {
     "status": "success",
     "errors": null,
     "data": {
@@ -73,10 +73,10 @@ Below are endpoints exposed :
   }
 
 
-6) Save the deal
-	URL : http://localhost:8080/currencies/transactions
-	Type : POST
-	Request Body : {
+6) Save the transaction
+     URL : http://localhost:8080/currencies/transactions
+     Type : POST
+     Request Body : {
     "name": "ravi",
     "inputCurrency": "SGD",
     "amount": "12",
